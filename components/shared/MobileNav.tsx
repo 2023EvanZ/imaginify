@@ -3,7 +3,7 @@
 import { Sheet, SheetContent, SheetTrigger,} from "@/components/ui/sheet"
 import { navLinks } from "@/constants"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
-import { Link } from "lucide-react"
+import Link from "next/link"
 import Image from 'next/image'
 import { usePathname } from "next/navigation"
 import { Button } from "../ui/button"
@@ -45,24 +45,24 @@ const MobileNav = () => {
                   alt="logo"
                 />
                 <ul className="header-nav_elements">
-                        {navLinks.map((link) => {
-                            const isActive = link.route === pathname
+                  {navLinks.map((link) => {
+                    const isActive = link.route === pathname
 
-                            return (
-                                <li key = {link.route} className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}>
-                                    <Link className="sidebar-link cursor-pointer" href={link.route}>
-                                        <Image 
-                                            src={link.icon}
-                                            alt="logo"
-                                            width={24}
-                                            height={24}
-                                        />
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            )
-                        })}
-                        </ul>
+                    return (
+                      <li key = {link.route} className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}>
+                        <Link className="sidebar-link cursor-pointer" href={link.route}>
+                          <Image 
+                            src={link.icon}
+                            alt="logo"
+                            width={24}
+                            height={24}
+                          />
+                          {link.label}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
               </>
             </SheetContent>
           </Sheet>
